@@ -1,0 +1,25 @@
+{
+  "title": "Ejemplo de flujo",
+  "phases": ["Entrada", "Proceso", "Salida"],
+  "flows": [{
+    "id": "pedido", "tab": "Pedido",
+    "title": "De que un cliente pide algo a que lo recibe",
+    "summary": "Ejemplo de tono y nivel de detalle. Cada caja dice que recibe, que hace y que devuelve.",
+    "known": ["El cliente rellena un formulario web."],
+    "unknown": ["Cuanto tarda el envio de media."],
+    "nodes": [
+      {"id":"cliente","col":1,"row":0,"kind":"user","icon":"user","status":"ok","phase":"Entrada","title":"El cliente pide","sub":"Rellena el formulario","where":"web/formulario","in":"Nada: empieza aqui","does":"Elige producto y direccion","out":"Un pedido con producto y direccion"},
+      {"id":"validar","col":1,"row":1,"kind":"code","icon":"check","status":"ok","phase":"Proceso","title":"Validar el pedido","sub":"Comprueba datos","where":"api/validar.ts","in":"El pedido","does":"Mira que no falte la direccion y que haya stock","out":"Pedido valido o error"},
+      {"id":"guardar","col":0,"row":2,"kind":"store","icon":"db","status":"ok","phase":"Proceso","title":"Guardar","sub":"Base de datos","where":"db/pedidos","in":"Pedido valido","does":"Lo guarda con un numero","out":"Numero de pedido"},
+      {"id":"aviso","col":2,"row":2,"kind":"ext","icon":"upload","status":"hyp","phase":"Proceso","title":"Avisar por email","sub":"Servicio externo","where":"api/email.ts","in":"Numero de pedido","does":"Envia la confirmacion","out":"Email enviado"},
+      {"id":"entrega","col":1,"row":3,"kind":"user","icon":"check","status":"ok","phase":"Salida","title":"El cliente recibe","sub":"Fin del flujo","where":"-","in":"Paquete","does":"Recibe y confirma","out":"Pedido cerrado"}
+    ],
+    "edges": [
+      {"from":"cliente","to":"validar","label":"pedido"},
+      {"from":"validar","to":"guardar","label":"pedido valido"},
+      {"from":"validar","to":"aviso","label":"numero","dashed":true},
+      {"from":"guardar","to":"entrega","label":"envio"},
+      {"from":"aviso","to":"entrega","label":"email"}
+    ]
+  }]
+}

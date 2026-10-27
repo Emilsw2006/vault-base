@@ -59,6 +59,16 @@ Obsidian, wikilinks, Bases, Canvas).
   en `hot/log.md`.
 - Pocos MCPs y skills activos: cada uno suma tokens en cada turno.
 
+## Skills propias de este vault (`.claude/skills/`)
+
+| Skill | Para qué |
+|---|---|
+| `pdf-a-markdown` | Convierte un PDF a texto una vez (los PDFs directos están bloqueados) |
+| `nuevo-proyecto` | Crea `wiki/projects/<nombre>/` con índice y enlaces |
+| `cierre-sesion` | Guarda el estado en `hot/log.md` para poder hacer `/clear` |
+| `fluxdiagram` | Dibuja un flujo (pasos, modelos, APIs, código) como diagrama interactivo en una web |
+| `dream` | Consolida y ordena la memoria de Claude (`/dream`) |
+
 ## Modos de operación
 
 - **`ingest`**: procesa un archivo de `.raw/` o `inbox/` → entre 8 y 15 notas
