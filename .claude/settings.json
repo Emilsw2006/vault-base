@@ -1,0 +1,20 @@
+{
+  "model": "sonnet",
+  "permissions": {
+    "deny": [
+      "Read(**/*.pdf)"
+    ]
+  },
+  "extraKnownMarketplaces": {
+    "agricidaniel-claude-obsidian": {
+      "source": { "source": "github", "repo": "AgriciDaniel/claude-obsidian" }
+    },
+    "obsidian-skills": {
+      "source": { "source": "github", "repo": "kepano/obsidian-skills" }
+    }
+  },
+  "enabledPlugins": {
+    "claude-obsidian@agricidaniel-claude-obsidian": true,
+    "obsidian@obsidian-skills": true
+  }
+}
