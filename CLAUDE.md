@@ -68,6 +68,7 @@ Obsidian, wikilinks, Bases, Canvas).
 | `cierre-sesion` | Guarda el estado en `hot/log.md` para poder hacer `/clear` |
 | `fluxdiagram` | Dibuja un flujo (pasos, modelos, APIs, código) como diagrama interactivo en una web |
 | `dream` | Consolida y ordena la memoria de Claude (`/dream`) |
+| `video-explicativo-viral` | Reel vertical «cómo funciona X» hecho en código, con reglas medidas en 67 reels (guion, look, ritmo, crítico). Datos en su carpeta `references/` y scripts en `scripts/` |
 
 ## Modos de operación
 

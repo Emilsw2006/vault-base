@@ -24,8 +24,8 @@ export PATH="$HOME/.local/bin:$PATH"
 say "Obsidian"
 if [ -d "/Applications/Obsidian.app" ]; then echo "OK ya instalado"; else brew install --cask obsidian; fi
 
-say "Git, Node y poppler (pdftotext)"
-for f in git node poppler; do brew list "$f" >/dev/null 2>&1 || brew install "$f"; done
+say "Git, Node, poppler (pdftotext), ffmpeg y yt-dlp (para los reels)"
+for f in git node poppler ffmpeg yt-dlp; do brew list "$f" >/dev/null 2>&1 || brew install "$f"; done
 
 say "markitdown (PDF -> markdown)"
 if ! have markitdown; then
@@ -38,7 +38,7 @@ say "Claude Code"
 have claude && echo "OK ya instalado" || curl -fsSL https://claude.ai/install.sh | bash
 
 say "Resumen"
-for c in brew git node pdftotext markitdown claude; do
+for c in brew git node pdftotext ffmpeg yt-dlp markitdown claude; do
   have "$c" && echo "  OK  $c" || echo "  --  $c (no encontrado; abre una Terminal nueva y reintenta)"
 done
 [ -d "/Applications/Obsidian.app" ] && echo "  OK  Obsidian" || echo "  --  Obsidian"

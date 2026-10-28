@@ -50,3 +50,20 @@ desde CLAUDE.md y PRIMER-ARRANQUE.md.
 - El modelo por defecto es Sonnet (más barato). Cambia a uno mayor solo si hace falta.
 - Pocos MCPs y skills extra: cada uno se carga en cada turno.
 - Terminal o app da igual: el gasto son tokens, no la interfaz.
+
+## Hacer un reel explicativo (skill `video-explicativo-viral`)
+Todo está en `.claude/skills/video-explicativo-viral/` (reglas, 8 notas de datos y
+3 scripts de medición). El mismo contenido en un solo archivo: `REELS-EXPLICATIVOS-TODO-EN-UNO.md`.
+Prompt para empezar:
+```
+Usa la skill video-explicativo-viral. Quiero un reel vertical de 15-30 s
+(familia P) que explique cómo funciona <OBJETO COTIDIANO>.
+Haz solo esto, por orden, y párate al final de cada paso:
+1) Propón 3 temas con creencia errónea + mecanismo dibujable, y espera mi elección.
+2) Investiga con fuente por dato (facts.json). Sin fuente, el dato no sale.
+3) Escribe el guion con la plantilla medida (frase 1 de ~10 palabras, frase-firma al final).
+4) Espera mi OK antes de generar voz o render (gastan cuota y claves).
+Avísame qué claves necesitas (ElevenLabs/Deepgram) y dónde ponerlas (.env local).
+No digas que "funciona" hasta pasar el crítico con medidas reales.
+```
+
