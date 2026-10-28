@@ -14,6 +14,13 @@ if ! have brew; then
 fi
 have brew && echo "OK brew" || { echo "FALLO: brew no se instaló"; exit 1; }
 
+# Sin esto, brew/node/claude no existen al abrir una Terminal nueva.
+touch ~/.zprofile
+BREW_LINE="eval \"\$($(command -v brew) shellenv)\""
+grep -qF "$BREW_LINE" ~/.zprofile || echo "$BREW_LINE" >> ~/.zprofile
+grep -qF '.local/bin' ~/.zprofile || echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zprofile
+export PATH="$HOME/.local/bin:$PATH"
+
 say "Obsidian"
 if [ -d "/Applications/Obsidian.app" ]; then echo "OK ya instalado"; else brew install --cask obsidian; fi
 
@@ -36,4 +43,4 @@ for c in brew git node pdftotext markitdown claude; do
 done
 [ -d "/Applications/Obsidian.app" ] && echo "  OK  Obsidian" || echo "  --  Obsidian"
 echo
-echo "Listo. Abre Obsidian > 'Abrir carpeta como vault' > esta carpeta."
+echo "Listo. Cierra esta Terminal, abre una nueva y escribe: cd ~/Vault && claude"

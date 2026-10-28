@@ -1,38 +1,45 @@
 # Primer arranque en el Mac
 
-## 1. Descargar el vault (Terminal)
+## 1. Descargar el vault e instalar todo (Terminal)
 ```
 git clone https://github.com/Emilsw2006/vault-base.git ~/Vault
 cd ~/Vault
+bash instalar-mac.sh
 ```
-Si te pide instalar las «herramientas de línea de comandos», acepta y repite.
-Si el repo es privado, necesitas que te hayan dado acceso y entrar con tu cuenta
-de GitHub (`gh auth login` o el login del navegador al clonar).
+- Si te pide instalar las «herramientas de línea de comandos», acepta y repite.
+- Homebrew te pedirá la **contraseña del Mac** (no se ve al escribirla) y que
+  pulses **Enter**. Por eso este paso lo haces tú y no Claude.
+- Tarda unos minutos. Al final sale un resumen con `OK` o `--` por cada cosa.
 
-## 2. Claude Code
-Si aún no lo tienes: `curl -fsSL https://claude.ai/install.sh | bash`
-y abre una Terminal nueva. Luego, dentro de `~/Vault`:
+## 2. Abrir Claude
+Cierra la Terminal, abre una **nueva** y escribe:
 ```
-claude
+cd ~/Vault && claude
 ```
-(La primera vez te pedirá iniciar sesión con tu cuenta de Claude.)
+- La primera vez te pide iniciar sesión con tu cuenta de Claude.
+- Si pregunta si confías en la carpeta: **sí**.
+- Si pregunta si instalar los plugins `claude-obsidian` y `obsidian`: **sí**.
+  Después cierra Claude (`/exit`) y vuelve a abrirlo con `claude`: los plugins
+  solo se cargan al arrancar.
 
 ## 3. Pega este prompt
 ```
 Eres mi asistente de instalación. Este vault es nuevo y está vacío; léelo todo
 desde CLAUDE.md y PRIMER-ARRANQUE.md.
 
-1) Ejecuta ./instalar-mac.sh (instala Homebrew, Obsidian, git, node, poppler,
-   markitdown y Claude Code; salta lo que ya esté). Si algo falla, explícamelo
-   en lenguaje simple y arréglalo; no sigas a ciegas.
-2) Los plugins claude-obsidian y obsidian-skills están declarados en
-   .claude/settings.json: confirma con /plugin que quedan instalados y
-   activos; si no, instálalos tú.
+1) Ya ejecuté instalar-mac.sh en la Terminal. Vuelve a correr
+   `bash instalar-mac.sh` (salta lo instalado) y dime qué queda con `--`.
+   Si algo falla, explícamelo en lenguaje simple y arréglalo; si necesita mi
+   contraseña, dime el comando exacto para pegarlo yo en la Terminal.
+2) Comprueba que las skills de los plugins claude-obsidian y obsidian-skills
+   están cargadas (por ejemplo, la skill `wiki`). Si no, dime que escriba
+   /plugin para instalarlos y que reinicie claude; no sigas sin ellas.
 3) Abre el vault en Obsidian (open -a Obsidian ~/Vault) y dime si cargó.
 4) Haz el diagnóstico con la skill `wiki`: carpetas, skills y plugins activos.
 5) Pregúntame UNA vez, en lista corta: a qué me dedico, qué proyectos tengo y
    qué quiero conseguir. Con eso rellena «Contexto personal» en CLAUDE.md y
-   crea un proyecto por cada uno con la skill `nuevo-proyecto`.
+   crea un proyecto por cada uno con la skill `nuevo-proyecto` (sin volver a
+   preguntarme lo que ya te dije).
 6) Termina con un resumen de lo instalado y qué comprobaste de verdad.
 ```
 
